@@ -10,17 +10,20 @@ import axios from "axios";
       data(){
             return{
                 projects : [],
+                currentPage: 1,
             }
         },
       methods : {
-            getProjects(){
+            getProjects(page = 1){
                 axios.get('http://127.0.0.1:8000/api/projects', {
                 params: {
+                    page: page
                 }
             })
             .then((response) => {
                 console.log(response.data.results.data);
-                this.projects = response.data.results.data;
+                this.projects.push(...response.data.results.data);
+                this.currentPage = response.data.results.current_page;
             })
             .catch(function (error) {
                 console.log(error);
@@ -39,12 +42,16 @@ import axios from "axios";
 </script>
 
 <template>
-   <ul>
-    <ProjectCard v-for="project in projects" :title="project.title" :author="project.user.name" :description="project.description" :type="project.type.name" :image="project.image_url" :technologies="project.technologies">
-
-    </ProjectCard>
-   </ul>
-   
+    <main>
+        <ul>
+            <ProjectCard v-for="project in projects" :title="project.title" :author="project.user.name" :description="project.description" :type="project.type.name" :image="project.image_url" :technologies="project.technologies"/>
+        </ul>
+        <div class="d-flex justify-content-center allign-items-center">
+            <a href="" class="btn btn-secondary btn-lg" @click.prevent="getProjects(currentPage + 1)">
+                Load...
+            </a>
+        </div>
+    </main>
 
 </template>
 

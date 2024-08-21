@@ -38,7 +38,7 @@
 
 <template>
     <div class="project-card">
-  <img src="https://via.placeholder.com/150" alt="Project Image" class="project-card-img">
+  <img :src="image" alt="Project Image" class="project-card-img">
   <div class="project-card-body">
     <h3 class="project-card-title">{{ author }}</h3>
     <h5 class="project-card-title">{{ title }}</h5>
