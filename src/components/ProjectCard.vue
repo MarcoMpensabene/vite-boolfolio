@@ -3,9 +3,34 @@
 
         data()
         {
-            return
-            {
+            return{
             
+            }
+        },
+        props:{
+            title: {
+                typeof : String,
+                required : true
+            },
+            author:{
+                typeof : String,
+                required : true
+            },
+            description: {
+                typeof : String,
+                required : true
+            },
+            type : {
+                typeof : String,
+                required : true
+            },
+            image : {
+                typeof : String,
+                required : false 
+            },
+            technologies : {
+                typeof : Array,
+                required : true
             }
         }
     }
@@ -15,26 +40,26 @@
     <div class="project-card">
   <img src="https://via.placeholder.com/150" alt="Project Image" class="project-card-img">
   <div class="project-card-body">
-    <h5 class="project-card-title">Project Title</h5>
-    <p class="project-card-type">Project Type</p>
-    <p class="project-card-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <h3 class="project-card-title">{{ author }}</h3>
+    <h5 class="project-card-title">{{ title }}</h5>
+    <p class="project-card-type">{{ type }}</p>
+    <p class="project-card-description">{{ description }}</p>
     <div class="project-card-tech">
-      <span class="badge tech-badge">Tech 1</span>
-      <span class="badge tech-badge">Tech 2</span>
-      <span class="badge tech-badge">Tech 3</span>
+      <span class="badge text-bg-success" v-for="technology in technologies">{{ technology.name }}</span>
+      
     </div>
   </div>
 </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .project-card {
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  max-width: 1000px;
+  max-width: 700px;
   margin: 20px;
   background-color: #fff;
 
@@ -74,16 +99,6 @@
     &-tech {
       display: flex;
       flex-wrap: wrap;
-
-      .tech-badge {
-        background-color: #f1f1f1;
-        color: #555;
-        border-radius: 20px;
-        padding: 5px 10px;
-        font-size: 0.75rem;
-        margin-right: 5px;
-        margin-bottom: 5px;
-      }
     }
   }
 }
