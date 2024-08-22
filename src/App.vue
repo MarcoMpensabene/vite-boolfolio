@@ -17,6 +17,7 @@ import ProjectsList from './components/ProjectsList.vue';
 <template>
       <AppHeader  />
       <ProjectsList  />
+      <router-view></router-view>
       <AppFooter  />
 
 </template>
