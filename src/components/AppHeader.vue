@@ -12,10 +12,7 @@
                         label : "ProjectsAbout",
                         name : "about"
                     },
-                    {
-                        label : "ProjectsShow",
-                        name : "show"
-                    },
+                    
                 ]
             }
         }

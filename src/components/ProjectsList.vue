@@ -43,9 +43,9 @@ import axios from "axios";
 
 <template>
     <main>
-        <div >
-            <ProjectCard  v-for="project in projects" :title="project.title" :author="project.user.name" :description="project.description" :type="project.type.name" :image="project.image_url" :technologies="project.technologies"/>
-        </div>
+        <router-link v-for="project in projects" :to="{name: 'show' , params: {id: project.id }}" >
+            <ProjectCard   :title="project.title" :author="project.user.name" :description="project.description" :type="project.type.name" :image="project.image_url" :technologies="project.technologies"/>
+        </router-link>
         <div class="d-flex justify-content-center allign-items-center">
             <a href="" class="btn btn-secondary btn-lg" @click.prevent="getProjects(currentPage + 1)">
                 Load...
